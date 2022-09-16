@@ -57,40 +57,6 @@ public class User {
          
          try
          {
-        	 /*URL url = new URL ("http://localhost:8080/IdentityThreats/rest/add_user");
-        	 HttpURLConnection con = (HttpURLConnection)url.openConnection();
-        	 con.setRequestMethod("POST");
-        	 con.setRequestProperty("Content-Type","application/json");
-        	 con.setRequestProperty("Accept","application/json");
-        	 
-        	 HttpURLConnection.setFollowRedirects(true);
-        	 con.setInstanceFollowRedirects(false);
-        	 con.setDoOutput(true);
-        	 
-        	 OutputStream out = con.getOutputStream();
-        	 
-        	 out.write(user.toString().getBytes());
-             InputStream ip = con.getInputStream();
-             
-             BufferedReader br1 = new BufferedReader(new InputStreamReader(ip));
-                
-             System.out.println("Response Code:" + con.getResponseCode());
-             System.out.println("Response Message:" + con.getResponseMessage());
-             System.out.println("InstanceFollowRedirects:" + con.getInstanceFollowRedirects());
-             System.out.println("Header field 1:" + con.getHeaderField(1));
-             System.out.println("Using proxy:" + con.usingProxy());
-             
-             StringBuilder response = new StringBuilder();
-             String responseSingle = null;
-
-             while ((responseSingle = br1.readLine())!= null) 
-             {
-            	 response.append(responseSingle);
-             }
-         
-             String xx = response.toString();
-             System.out.println(xx);*/
-        	 
         	 String requestBody= user.toJSONString();
         	 
         	 HttpClient client = HttpClient.newHttpClient();
@@ -171,4 +137,5 @@ public class User {
 		
 		return null;
 	}
+	
 }

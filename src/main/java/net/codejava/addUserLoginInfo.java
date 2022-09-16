@@ -15,7 +15,7 @@ public class addUserLoginInfo {
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	
-		public boolean add(String reqBod) 
+		public String add(String reqBod) 
 		{
 			JSONParser jsonParser = new JSONParser();
 			
@@ -42,8 +42,8 @@ public class addUserLoginInfo {
 	            String city = (String) record.get("LocationCity");
 	            String state = (String) record.get("LocationState");
 	            String country = (String) record.get("LocationCountryorRegion");
-	            float lat = Float.parseFloat((String) record.get("LocationLatitude"));
-	            float longi = Float.parseFloat((String) record.get("LocationLongitude"));
+	            Double lat = Double.parseDouble((String) record.get("LocationLatitude"));
+	            Double longi = Double.parseDouble((String) record.get("LocationLongitude"));
 	            String status = (String) record.get("AccessStatus");
 	            String name = (String) record.get("Username");
 	            pstmt.setString(1, displayName);
@@ -57,23 +57,22 @@ public class addUserLoginInfo {
 	            pstmt.setString(9, city);
 	            pstmt.setString(10, state);
 	            pstmt.setString(11, country);
-	            pstmt.setFloat(12, lat);
-	            pstmt.setFloat(13, longi);
+	            pstmt.setDouble(12, lat);
+	            pstmt.setDouble(13, longi);
 	            pstmt.setString(14, status);
 	            pstmt.setString(15, name);
 	            pstmt.executeUpdate();
 		        
 		        System.out.println("Records inserted.....");
 		         
-		        return true;
+		        return "true";
 			}
 			
 			catch(Exception e)
 			{
-				System.out.println(e);
+				return e.toString();
 			}
 			
-			return false;
 		}
 
 }

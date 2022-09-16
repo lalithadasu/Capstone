@@ -1,27 +1,22 @@
 package net.codejava;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
-import java.util.HashMap;
-
-import org.json.simple.JSONObject;
-
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
-import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 
-import java.util.*;
+import java.sql.*;
 
-@Path("/getLoginInfo/{name}")
-public class getLoginInfo {
+import org.json.simple.JSONObject;
+
+import java.util.*;
  
+@Path("/getUsers")
+
+public class getAllUsers {
     @GET
     @Produces(MediaType.TEXT_PLAIN)
-    public String get_userInfo(@PathParam("name")String name) {
+    public String get_userInfo() {
     	
     	try
     	{
@@ -31,12 +26,11 @@ public class getLoginInfo {
             c = DriverManager.getConnection("jdbc:mysql://localhost:3306/capstone?zeroDateTimeBehavior=CONVERT_TO_NULL","root","Lalitha@1");
             s = c.createStatement();
             
-            String x="select * from UserLoginInfo WHERE Username = '" + name + "' ;";
+            String x="select username from USER;";
             
             ResultSet rs = s.executeQuery(x);
             
             ArrayList<JSONObject> arr = new ArrayList<JSONObject> ();
-            //JSONArray JSONarr= new JSONArray();
             
             while(rs.next())
             {
@@ -49,13 +43,9 @@ public class getLoginInfo {
                 	userInfo.put(rs.getMetaData().getColumnLabel(i + 1).toLowerCase(), rs.getObject(i + 1));
                 
                 JSONObject obj = new JSONObject(userInfo);
-                
                 arr.add(obj);
-                
                 //return obj.toString();
             }
-            
-            //JSONarr = (JSONArray) arr;
             
             return arr.toString();
      

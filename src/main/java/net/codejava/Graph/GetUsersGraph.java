@@ -1,4 +1,4 @@
-package net.codejava;
+package net.codejava.Graph;
 
 import com.azure.identity.DeviceCodeCredential;
 import com.azure.identity.DeviceCodeCredentialBuilder;
@@ -17,7 +17,7 @@ import org.json.simple.JSONArray;
 import org.json.simple.parser.JSONParser;
 
 
-public class DeviceCodeFlowMain {
+public class GetUsersGraph {
     private final static List<String> SCOPES = Arrays.asList("User.Read.All");
 
     public static void main(String[] args) throws Exception {
@@ -52,7 +52,15 @@ public class DeviceCodeFlowMain {
                 		//String resultString = object.toString();
                 		//System.out.println(resultString + "\n");
                 		
-                		String username = (String) object.get("givenName");
+                		String username = (String) object.get("userPrincipalName");
+                		username= username.split("@")[0];
+                		
+                		if(username.indexOf("#EXT#") != -1)
+                		{
+                			System.out.println("Cannot Add EXT User");
+                			continue;
+                		}
+                		
         	            String mail = (String) object.get("userPrincipalName");
         	            String displayName = (String) object.get("displayName");
         	            String firstname = (String) object.get("givenName");
