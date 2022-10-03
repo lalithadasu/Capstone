@@ -1,6 +1,7 @@
 package net.codejava.Classes;
 
 import org.json.simple.JSONObject;
+import org.json.simple.JSONArray;
 import org.json.simple.parser.JSONParser;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -21,6 +22,16 @@ public class User {
 	long phonenumber;
 	String password;
 	
+	public String getMail()
+	{
+		return this.Mail;
+	}
+	
+	public String getUsername()
+	{
+		return this.Username;
+	}
+	
 	public User(String Username,String Mail,String displayName,String firstname,String lastname,long phonenumber, String password)
 	{
 		this.Username=Username;
@@ -32,9 +43,49 @@ public class User {
 		this.password=password;
 	}
 	
-	public User()
+	public User(String Username)
 	{
+		this.Username=Username;
+		try {
+				String URLvalue="http://localhost:8080/IdentityThreats/rest/get_userInfo/" + Username;
+				URL url = new URL(URLvalue);
+				HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+				conn.setRequestMethod("GET");
+				conn.setRequestProperty("Content-Type", "text/plain; charset=utf-8");
+	
+				if (conn.getResponseCode() != 200) {
+					throw new RuntimeException("Failed : HTTP error code : "
+							+ conn.getResponseCode());
+				}
+				
+				BufferedReader in = new BufferedReader(new InputStreamReader(
+						conn.getInputStream()));
+				String inputLine;
+				StringBuffer response = new StringBuffer();
+	
+				while ((inputLine = in.readLine()) != null) {
+					response.append(inputLine);
+				}
+				in.close();
+				
+				String details=response.toString();
+				
+				JSONParser jsonParser = new JSONParser();
+				JSONObject json = (JSONObject) jsonParser.parse(details);
+				
+				this.Mail=(String)json.get("mail");
+				this.displayName=(String)json.get("displayname");
+				this.firstname=(String)json.get("firstname");
+				this.lastname=(String)json.get("lastname");
+				this.phonenumber=(Long)json.get("phonenumber");
+				this.password=(String)json.get("password");
+				
+		  }
 		
+		catch(Exception e)
+		{
+			System.out.println(e);
+		}
 	}
 	
 	public String jsonToString (JSONObject record )
@@ -136,6 +187,44 @@ public class User {
 		}
 		
 		return null;
+	}
+	
+	public String getUserLogin()
+	{
+		try {
+			
+			String name=this.Username;
+			String URLvalue="http://localhost:8080/IdentityThreats/rest/getLoginInfo/" + name;
+			URL url = new URL(URLvalue);
+			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+			conn.setRequestMethod("GET");
+			conn.setRequestProperty("Content-Type", "text/plain; charset=utf-8");
+
+			if (conn.getResponseCode() != 200) {
+				throw new RuntimeException("Failed : HTTP error code : "
+						+ conn.getResponseCode());
+			}
+			
+			BufferedReader in = new BufferedReader(new InputStreamReader(
+					conn.getInputStream()));
+			String inputLine;
+			StringBuffer response = new StringBuffer();
+
+			while ((inputLine = in.readLine()) != null) {
+				response.append(inputLine);
+			}
+			in.close();
+			
+			return response.toString();
+
+		  }
+		
+		catch(Exception e)
+		{
+			System.out.println(e);
+		}
+		
+		return "error";
 	}
 	
 }

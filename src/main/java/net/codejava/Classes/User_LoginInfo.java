@@ -52,6 +52,16 @@ public class User_LoginInfo {
 		this.accessStatus=accessStatus;
 	}
 	
+	public User_LoginInfo(String Username)
+	{
+		this.Username=Username;
+	}
+	
+	public String getCountry()
+	{
+		return this.location_countryOrRegion;
+	}
+	
 	public String jsonToString (JSONObject record )
 	{
 		return record.toJSONString();
