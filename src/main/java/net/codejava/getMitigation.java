@@ -19,7 +19,7 @@ public class getMitigation {
  
     @GET
     @Produces(MediaType.TEXT_PLAIN)
-    public String get_userInfo(@PathParam("name")String name) {
+    public String get_Mitigation(@PathParam("name")String name) {
     	
     	try
     	{

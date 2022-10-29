@@ -21,7 +21,7 @@ public class getLoginInfo {
  
     @GET
     @Produces(MediaType.TEXT_PLAIN)
-    public String get_userInfo(@PathParam("name")String name) {
+    public String get_LoginInfo(@PathParam("name")String name) {
     	
     	try
     	{

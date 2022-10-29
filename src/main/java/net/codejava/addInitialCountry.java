@@ -10,7 +10,7 @@ package net.codejava;
  import org.json.simple.JSONObject;
  import org.json.simple.parser.JSONParser;
 
- @Path("/addInitialCountry")
+ @Path("/addInitial")
 
  public class addInitialCountry  {
  	@POST

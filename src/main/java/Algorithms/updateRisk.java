@@ -7,7 +7,9 @@ import org.json.simple.parser.JSONParser;
 import net.codejava.Classes.User;
 import Algorithms.genericFunctions;
 import Algorithms.ImpossibleTravel;
-import Algorithms.LocationCheck;
+import Algorithms.Location;
+import Algorithms.Browser;
+import Algorithms.Device;
 
 public class updateRisk {
 	
@@ -32,7 +34,9 @@ public class updateRisk {
         			genericFunctions.addRisk(x,travelRiskScore,"TravelRisk");
             	}
             	
-            	LocationCheck.locationConfidence(name);
+            	Location.locationConfidence(name);
+            	Browser.browserConfidence(name);
+            	Device.deviceConfidence(name);
             	
             }
         }

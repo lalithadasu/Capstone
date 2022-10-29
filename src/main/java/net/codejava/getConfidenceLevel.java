@@ -17,7 +17,7 @@ import java.util.*;
 public class getConfidenceLevel {
 	@GET
     @Produces(MediaType.TEXT_PLAIN)
-    public String getRiskLevel(@PathParam("name")String name, @PathParam("field")String field) {
+    public String getConfLevel(@PathParam("name")String name) {
     	
     	try
     	{

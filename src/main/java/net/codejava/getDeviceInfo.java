@@ -20,7 +20,7 @@ public class getDeviceInfo {
  
     @GET
     @Produces(MediaType.TEXT_PLAIN)
-    public String get_userInfo(@PathParam("name")String name) {
+    public String get_DeviceInfo(@PathParam("name")String name) {
     	
     	try
     	{
