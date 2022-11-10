@@ -49,7 +49,8 @@ public class addRiskScore {
 	            pstmt.setDouble(3, riskScore);
 	            pstmt.executeUpdate();
 		        
-		        System.out.println("Records inserted.....");
+	            if(c!=null)
+	            	  c.close();
 		         
 		        return "true";
 			}
@@ -59,7 +60,6 @@ public class addRiskScore {
 				//System.out.println(e);
 				return e.toString();
 			}
-			
 			
 		}
 }

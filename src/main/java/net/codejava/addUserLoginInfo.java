@@ -29,7 +29,7 @@ public class addUserLoginInfo {
 		        c = DriverManager.getConnection("jdbc:mysql://localhost:3306/capstone?zeroDateTimeBehavior=CONVERT_TO_NULL","root","Lalitha@1");
 		        s = c.createStatement();
 		        
-		        PreparedStatement pstmt = c.prepareStatement("INSERT INTO UserLoginInfo values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+		        PreparedStatement pstmt = c.prepareStatement("REPLACE INTO UserLoginInfo values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 		        
 	            String displayName = (String) record.get("DisplayName");
 	            String Created = (String) record.get("CreateDateTime");

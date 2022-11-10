@@ -23,8 +23,8 @@ public class GetUsersGraph {
     public static void main(String[] args) throws Exception {
     	
     	 final DeviceCodeCredential deviceCodeCred = new DeviceCodeCredentialBuilder()
-                 .clientId("b347be66-878b-44db-b848-b9b190e34ead")
-                 .tenantId("3091c97b-2f7e-48dd-8cae-eb3fc98f79a4")
+                 .clientId("388650b0-1c3c-47b1-8677-7e9058573a2b")
+                 .tenantId("9187d23d-78c2-466f-b2de-110ddb706ca3")
                  .challengeConsumer(challenge -> System.out.println(challenge.getMessage()))
                  .build();
     	

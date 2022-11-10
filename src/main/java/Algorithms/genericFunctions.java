@@ -139,5 +139,43 @@ public class genericFunctions {
 		return "Error";
     }
 	
+	public static String getCompromised(String uname, String pwd)
+	{
+		try {
+			
+			String URLvalue="http://localhost:8080/IdentityThreats/rest/getCompromised/" + uname+ "/" + pwd;
+			URL url = new URL(URLvalue);
+			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+			conn.setRequestMethod("GET");
+			conn.setRequestProperty("Content-Type", "text/plain; charset=utf-8");
+
+			if (conn.getResponseCode() != 200) {
+				throw new RuntimeException("Failed : HTTP error code : "
+						+ conn.getResponseCode());
+			}
+			
+			BufferedReader in = new BufferedReader(new InputStreamReader(
+					conn.getInputStream()));
+			String inputLine;
+			StringBuffer response = new StringBuffer();
+
+			while ((inputLine = in.readLine()) != null) {
+				response.append(inputLine);
+			}
+			in.close();
+			
+			String val= response.toString();
+			return val;
+
+		  }
+		
+		catch(Exception e)
+		{
+			System.out.println(e);
+		}
+		
+		return "fail";
+	}
+		
 	
 }

@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -36,9 +38,8 @@
 </head>
 
 <body>
-<input type="hidden" id="status" value="<% request.getAttribute("status"); %>>">
 <div class="login-form">
-    <form method="post" action="loginform" class="login-form">
+    <form method="post" action="homeLogin">
         <h2 class="text-center">Log in</h2>       
         <div class="form-group">
             <input type="text" class="form-control" placeholder="Username" required="required" name="Username">
@@ -51,15 +52,11 @@
         </div>
         <div class="clearfix">
             <label class="float-left form-check-label"><input type="checkbox"> Remember me</label>
-            <a href="#" class="float-right">Forgot Password?</a>
+            <a href="reset.jsp" class="float-right">Reset Password</a>
         </div>        
     </form>
     <p class="text-center"><a href="#">Create an Account</a></p>
-    
-    <script type="text/javascript">
- 		var resp=document.getElementById("status");
- 		alert(resp);
-	</script>
+
 </div>
 </body>
 

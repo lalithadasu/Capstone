@@ -49,7 +49,8 @@ public class addConfidenceLevel {
 	            pstmt.setDouble(3, confidenceLevel);
 	            pstmt.executeUpdate();
 		        
-		        System.out.println("Records inserted.....");
+	            if(c!=null)
+	            	  c.close();
 		         
 		        return "true";
 			}

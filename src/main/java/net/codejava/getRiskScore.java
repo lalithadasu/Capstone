@@ -48,6 +48,9 @@ public class getRiskScore {
                 
                 return obj.toString();
             }
+            
+            if(c!=null)
+          	  c.close();
      
     	}
     	

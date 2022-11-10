@@ -45,6 +45,9 @@ public class getConfidenceLevel {
                 
                 return obj.toString();
             }
+            
+            if(c!=null)
+          	  c.close();
      
     	}
     	
