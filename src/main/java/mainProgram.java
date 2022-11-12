@@ -19,6 +19,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import Algorithms.Dashboard;
+import Algorithms.genericFunctions;
 import Algorithms.updateRisk;
 
 public class mainProgram {
@@ -125,14 +126,34 @@ public class mainProgram {
                		//String resultString = object.toString();
                		//System.out.println(resultString + "\n");
                		
+               		//String anon= (String) object.get("riskEventTypes");
+               		
+               		JSONArray anonJ = (JSONArray) object.get("riskEventTypes");
+               		String anon= anonJ.toJSONString();
+               		
+               		double arisk=anon.indexOf("anonymizedIPAddress");
+               		
                		String Username = (String) object.get("userPrincipalName");
                		Username=Username.split("@")[0];
+               		
+               		if(arisk==-1)
+               			arisk=0.0;
+               		
+               		else 
+               		{
+               			arisk=5.0;
+               			System.out.println(Username);
+               		}
                		
                		if(Username.indexOf("#EXT#") != -1)
                		{
                			System.out.println("Cannot Add EXT User");
                			continue;
                		}
+               		
+               		User x=new User(Username);
+               		
+               		genericFunctions.addRisk(x, arisk, "Anonymous");
                		
                		Username = Username.substring(0, 1).toUpperCase() + Username.substring(1); 
                		String displayName = (String) object.get("userDisplayName");

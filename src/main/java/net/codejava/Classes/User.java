@@ -32,6 +32,26 @@ public class User {
 		return this.Username;
 	}
 	
+	public String getDisplayName()
+	{
+		return this.displayName;
+	}
+	
+	public String getFirstname()
+	{
+		return this.firstname;
+	}
+	
+	public String getLastname()
+	{
+		return this.lastname;
+	}
+	
+	public long getPhonenumber()
+	{
+		return this.phonenumber;
+	}
+	
 	public User(String Username,String Mail,String displayName,String firstname,String lastname,long phonenumber, String password)
 	{
 		this.Username=Username;

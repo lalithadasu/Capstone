@@ -27,7 +27,7 @@ public class getUser {
     		Connection c;
             Statement s;
             Class.forName("com.mysql.cj.jdbc.Driver");
-            c = DriverManager.getConnection("jdbc:mysql://localhost:3306/capstone?zeroDateTimeBehavior=CONVERT_TO_NULL","root","Lalitha@1");
+            c = DriverManager.getConnection("jdbc:mysql://localhost:3306/capstone?zeroDateTimeBehavior=CONVERT_TO_NULL&useSSL=false","root","Lalitha@1");
             s = c.createStatement();
             
             String x="select * from USER WHERE username = '" + name + "' ;";

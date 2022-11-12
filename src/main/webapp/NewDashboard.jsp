@@ -150,18 +150,18 @@ td {
         <% for (int i = 0; i < aList.size(); i++) { 
            ArrayList<Object> rowObj = aList.get(i);
         %>
-        <tr>
+        <tr id=<%=i+1 %>>
 
             <% for (int j = 0; j < 7; j++) {
                Object cell = rowObj.get(j); 
             %>
-            <td>
+            <td class="row-data">
                    <%=cell.toString()%>
             </td>
             
             <% } %>
             
-            <td><button type="button" class="btn btn-danger">Examine</button></td>
+            <td><button type="button" class="btn btn-danger" onClick=show()>Examine</button></td>
             <td><button type="button" class="btn btn-danger">Mitigate</button></td>
         </tr>
       
@@ -177,6 +177,20 @@ td {
 </div>  
 <script>  
 $('table').DataTable();  
+
+function show()
+{
+	var rowId = event.target.parentNode.parentNode.id
+    var data = document.getElementById(rowId).querySelectorAll(".row-data"); 
+  
+    var name = data[0].innerHTML;
+    name=name.trim();
+
+    alert(name)
+    
+    window.open("examine.jsp?uname=" + name);
+}
+
 </script>  
 </body>  
 </html>  
