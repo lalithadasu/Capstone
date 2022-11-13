@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -87,7 +88,7 @@ tr {
 			anon = (double)userinfoObj.get("anon");
 			phno= (long)userinfoObj.get("phonenumber");
 			
-			if(anon==5)
+			if(anon!=0)
 				isAnon="Yes";
 			
 			else

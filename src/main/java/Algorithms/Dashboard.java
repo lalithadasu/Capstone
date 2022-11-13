@@ -50,7 +50,28 @@ public class Dashboard {
 	            bigDecimal = bigDecimal.setScale(2, RoundingMode.HALF_UP);
 	            confidence= bigDecimal.doubleValue();
 	            
+	            double travel=genericFunctions.getRiskLevel(name, "TravelRisk");
+	    		double location=genericFunctions.getRiskLevel(name, "LocationRisk");
+	    		double device=genericFunctions.getRiskLevel(name, "DeviceRisk");
+	    		double browser=genericFunctions.getRiskLevel(name, "BrowserRisk");
+	    		double password=genericFunctions.getRiskLevel(name, "PasswordRisk");
+	    		
 	        	int violations=0;
+	        	
+	        	if(location>=3)
+	        		violations++;
+	        	
+	        	if(travel>=3)
+	        		violations++;
+	        	
+	        	if(device>=3)
+	        		violations++;
+	        	
+	        	if(browser>=3)
+	        		violations++;
+	        	
+	        	if(password>=3)
+	        		violations++;
 	        	
 	        	HashMap<String,String> dashboard = new HashMap<String,String>();
 	    		dashboard.put("name", name);

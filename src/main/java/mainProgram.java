@@ -136,13 +136,17 @@ public class mainProgram {
                		String Username = (String) object.get("userPrincipalName");
                		Username=Username.split("@")[0];
                		
+               		double a=genericFunctions.getRiskLevel(Username, "Anonymous");
+               		
                		if(arisk==-1)
-               			arisk=0.0;
+               		{
+               			if(a>0)
+               				arisk=a-0.5;
+               		}
                		
                		else 
                		{
                			arisk=5.0;
-               			System.out.println(Username);
                		}
                		
                		if(Username.indexOf("#EXT#") != -1)
@@ -164,7 +168,18 @@ public class mainProgram {
        	            String clientAppUsed = (String) object.get("clientAppUsed");
        	            JSONObject deviceDetail = (JSONObject) object.get("deviceDetail");
        	            String device_operatingSystem= (String) deviceDetail.get("operatingSystem");
+       	            String deviceID= (String) deviceDetail.get("deviceId");
        	            String device_Browser= (String) deviceDetail.get("browser");
+       	            
+       	            double deviceRisk;
+       	            
+       	            if(deviceID=="")
+       	            	deviceRisk=5.0;
+       	            
+       	            else
+       	            	deviceRisk=0.0;
+       	            
+       	            genericFunctions.addRisk(x, deviceRisk, "isRegistered");
        	            
        	            Boolean dc= (Boolean) deviceDetail.get("isCompliant");
        	            

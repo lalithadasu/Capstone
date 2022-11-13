@@ -53,9 +53,9 @@ public class homeLogin extends HttpServlet {
 				response.setContentType("text/html");
 				PrintWriter pw=response.getWriter();
 				pw.println("<script type=\"text/javascript\">");
-				pw.println("alert('Compromised credentials. Reset password');");
+				pw.println("alert('Reset password');");
 				pw.println("</script>");
-				RequestDispatcher rd=request.getRequestDispatcher("Login.jsp");
+				RequestDispatcher rd=request.getRequestDispatcher("reset.jsp");
 				rd.include(request, response);
 			}
 			

@@ -162,7 +162,7 @@ td {
             <% } %>
             
             <td><button type="button" class="btn btn-danger" onClick=show()>Examine</button></td>
-            <td><button type="button" class="btn btn-danger">Mitigate</button></td>
+            <td><button type="button" class="btn btn-danger" onClick=mitigate()>Mitigate</button></td>
         </tr>
       
         <% } %>
@@ -185,10 +185,21 @@ function show()
   
     var name = data[0].innerHTML;
     name=name.trim();
-
-    alert(name)
     
     window.open("examine.jsp?uname=" + name);
+}
+
+function mitigate()
+{
+	var rowId = event.target.parentNode.parentNode.id
+    var data = document.getElementById(rowId).querySelectorAll(".row-data"); 
+  
+    var name = data[0].innerHTML;
+    name=name.trim();
+    
+    name=name+"@dishipes1outlook.onmicrosoft.com";
+    
+    window.open("mitigate.jsp?uname=" + name);
 }
 
 </script>  
