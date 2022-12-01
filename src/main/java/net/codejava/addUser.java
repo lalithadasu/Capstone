@@ -30,7 +30,7 @@ public class addUser {
 		        c = DriverManager.getConnection("jdbc:mysql://localhost:3306/capstone?zeroDateTimeBehavior=CONVERT_TO_NULL&useSSL=false","root","Lalitha@1");
 		        s = c.createStatement();
 		        
-		        PreparedStatement pstmt = c.prepareStatement("INSERT INTO USER values (?, ?, ?, ?, ?, ?, ? )");
+		        PreparedStatement pstmt = c.prepareStatement("INSERT IGNORE INTO USER values (?, ?, ?, ?, ?, ?, ? )");
 
 	            String username = (String) record.get("username");
 	            String mail = (String) record.get("mail");
@@ -47,8 +47,6 @@ public class addUser {
 	            pstmt.setLong(6, phonenumber);
 	            pstmt.setString(7, password);
 	            pstmt.executeUpdate();
-		        
-		        System.out.println("Records inserted.....");
 		         
 		        return "true";
 			}

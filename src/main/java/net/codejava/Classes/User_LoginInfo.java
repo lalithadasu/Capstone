@@ -29,11 +29,12 @@ public class User_LoginInfo {
 	Double location_latitude;
 	Double location_longitude;
 	String accessStatus;
+	String device;
 	
 	public User_LoginInfo(String Username,String displayName,String createdDateTime,String ipAddress,
 	String clientAppUsed, String device_operatingSystem,String device_Browser,int device_isComplient,
 	int device_isManaged,String location_city,String location_state,String location_countryOrRegion,
-	Double location_latitude,Double location_longitude,String accessStatus)
+	Double location_latitude,Double location_longitude,String accessStatus,String device)
 	{
 		this.Username=Username;
 		this.displayName=displayName;
@@ -50,6 +51,7 @@ public class User_LoginInfo {
 		this.location_latitude=location_latitude;
 		this.location_longitude=location_longitude;
 		this.accessStatus=accessStatus;
+		this.device=device;
 	}
 	
 	public User_LoginInfo(String Username)
@@ -85,6 +87,7 @@ public class User_LoginInfo {
          userLoginDetails.put("LocationLongitude", String.valueOf(this.location_longitude));
          userLoginDetails.put("AccessStatus", this.accessStatus);
          userLoginDetails.put("Username", this.Username);
+         userLoginDetails.put("device", this.device);
          
          JSONObject user = new JSONObject(userLoginDetails);
          
@@ -101,7 +104,7 @@ public class User_LoginInfo {
              HttpResponse<String> response = client.send(request,
                      HttpResponse.BodyHandlers.ofString());
 
-             System.out.println(response.body());
+             //System.out.println(response.body());
              
              return;
          }

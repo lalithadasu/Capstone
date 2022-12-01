@@ -5,6 +5,7 @@ import com.microsoft.graph.httpcore.HttpClients;
 import okhttp3.*;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -23,6 +24,9 @@ import Algorithms.genericFunctions;
 import Algorithms.updateRisk;
 
 public class mainProgram {
+	
+	static ArrayList<String> yes = new ArrayList<String>();
+	static ArrayList<String> no = new ArrayList<String>();
 	
 	private final static List<String> SCOPES = Arrays.asList("User.Read.All");
 	
@@ -142,6 +146,9 @@ public class mainProgram {
                		{
                			if(a>0)
                				arisk=a-0.5;
+               			
+               			else
+               				arisk=0.0;
                		}
                		
                		else 
@@ -171,15 +178,11 @@ public class mainProgram {
        	            String deviceID= (String) deviceDetail.get("deviceId");
        	            String device_Browser= (String) deviceDetail.get("browser");
        	            
-       	            double deviceRisk;
-       	            
-       	            if(deviceID=="")
-       	            	deviceRisk=5.0;
-       	            
-       	            else
-       	            	deviceRisk=0.0;
-       	            
-       	            genericFunctions.addRisk(x, deviceRisk, "isRegistered");
+       	            if(deviceID.length()>0)
+       	            {
+       	            	//no.add(Username);
+       	            	genericFunctions.addRisk(x,0.0, "isRegistered");
+       	            }
        	            
        	            Boolean dc= (Boolean) deviceDetail.get("isCompliant");
        	            
@@ -203,7 +206,7 @@ public class mainProgram {
        	            
        	            User_LoginInfo userLogin= new User_LoginInfo(Username,displayName,createdDateTime,ipAddress,
 	                    clientAppUsed,device_operatingSystem,device_Browser,device_isCompliant,device_isManaged,location_city,
-	                    location_state,location_countryOrRegion,location_latitude,location_longitude,accessStatus);
+	                    location_state,location_countryOrRegion,location_latitude,location_longitude,accessStatus,deviceID);
        	            
        	            userLogin.pushToDB();
                	}
@@ -254,6 +257,7 @@ public class mainProgram {
 		    	
 		    	updateRisk.updateRiskConfidence();
 		    	Dashboard.addToDashboard();
+		    	
 		    }
 		 }, 0, 1000 * 60 * 30);
 	}

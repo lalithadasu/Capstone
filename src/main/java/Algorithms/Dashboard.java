@@ -55,6 +55,7 @@ public class Dashboard {
 	    		double device=genericFunctions.getRiskLevel(name, "DeviceRisk");
 	    		double browser=genericFunctions.getRiskLevel(name, "BrowserRisk");
 	    		double password=genericFunctions.getRiskLevel(name, "PasswordRisk");
+	    		double anon=genericFunctions.getRiskLevel(name, "Anonymous");
 	    		
 	        	int violations=0;
 	        	
@@ -71,6 +72,9 @@ public class Dashboard {
 	        		violations++;
 	        	
 	        	if(password>=3)
+	        		violations++;
+	        	
+	        	if(anon>=3)
 	        		violations++;
 	        	
 	        	HashMap<String,String> dashboard = new HashMap<String,String>();

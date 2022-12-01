@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"
+    import="Algorithms.genericFunctions"%>
     
 <!DOCTYPE html>
 <html>
@@ -21,6 +22,12 @@ tr {
     border-bottom: 1px solid #ccc;
 }
 
+body
+{
+	background-image: url("/IdentityThreats/bgImg");
+	background-repeat:no-repeat;
+	background-size:cover;
+}
 
 </style>
 
@@ -48,7 +55,9 @@ tr {
 			double device = 0.0;
 			double password = 0.0;
 			double anon = 0.0;
+			double isReg=5.0;
 			String isAnon=" ";
+			String isRegis=" ";
 		try
 		{
 	    	String URLvalue="http://localhost:8080/IdentityThreats/rest/getUserRiskDetails/" + uname;
@@ -87,6 +96,13 @@ tr {
 			password = (double)userinfoObj.get("password");
 			anon = (double)userinfoObj.get("anon");
 			phno= (long)userinfoObj.get("phonenumber");
+			double reg=genericFunctions.getRiskLevel(uname,"isRegistered");
+			
+			if(reg!=5)
+				isRegis="Yes";
+			
+			else
+				isRegis="No";
 			
 			if(anon!=0)
 				isAnon="Yes";
@@ -130,6 +146,10 @@ tr {
 	    	<tr>
 	    		<td><i class='glyphicon glyphicon-eye-close'></i>&emsp;<strong>Anonymous Login</strong></td>
 	    		<td style="color:blue;"><%= isAnon %></td>
+	    	</tr>
+	    	<tr>
+	    		<td><i class='glyphicon glyphicon-list-alt'></i>&emsp;<strong>Registered Device</strong></td>
+	    		<td style="color:blue;"><%= isRegis %></td>
 	    	</tr>
     	</table>
     	
@@ -203,7 +223,7 @@ tr {
                   fontColor: '#555759',
                   fontSize: 16,
                   fontStyle: 700,
-                  labelString: 'Risk Scores'
+                  labelString: 'Risk Scores(0-5)'
                 },
                
              }]

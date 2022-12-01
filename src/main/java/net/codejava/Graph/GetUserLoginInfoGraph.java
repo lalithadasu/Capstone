@@ -91,10 +91,11 @@ public class GetUserLoginInfoGraph
         	            Double location_latitude= (Double) geoCoordinates.get("latitude");
         	            Double location_longitude= (Double) geoCoordinates.get("longitude");
         	            String accessStatus = (String) object.get("conditionalAccessStatus");
+        	            String device= (String) object.get("device");
         	            
         	            User_LoginInfo userLogin= new User_LoginInfo(Username,displayName,createdDateTime,ipAddress,
 	                    clientAppUsed,device_operatingSystem,device_Browser,device_isCompliant,device_isManaged,location_city,
-	                    location_state,location_countryOrRegion,location_latitude,location_longitude,accessStatus);
+	                    location_state,location_countryOrRegion,location_latitude,location_longitude,accessStatus,device);
         	            
         	            userLogin.pushToDB();
                 	}
