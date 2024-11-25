@@ -8,7 +8,6 @@ Identity-based attacks exploit vulnerabilities in authentication and access cont
 
 ## About Our Project
 Our project, **Defending Against Identity Threats Using Adaptive Authentication**, addresses these challenges by implementing a dynamic and intelligent risk-based authentication system. It uses zero-trust principles and a risk-scoring algorithm to classify users and devices as "risky" or "non-risky." By analyzing behavioral and contextual data, the system dynamically adapts authentication requirements to mitigate potential threats.
-
 The project specifically tackles five real-time use cases and devises risk-scoring algorithms for each, providing a robust defense against identity-based attacks.
 
 ---
