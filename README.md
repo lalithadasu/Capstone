@@ -53,7 +53,7 @@ The project focuses on five real-time use cases that address different identity-
 - **Frontend**: HTML5, JavaScript, JQuery.
 - **Backend**: Java Spring Boot, Maven.
 - **Database**: MySQL.
-- **APIs**: Microsoft Graph API for integration with Azure AD and Microsft Intune.
+- **APIs**: Microsoft Graph API for integration with Azure AD and Microsoft Intune.
 - **Development Tools**: Eclipse IDE, Apache Tomcat.
 
 ---
