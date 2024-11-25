@@ -62,7 +62,7 @@ The project focuses on five real-time use cases that address different identity-
 
 ## Project Design
 ### System Architecture
-![System Architecture](images/architecture_diagram.png)
+![System Architecture](architecture_diagram.jpg)
 The above diagram illustrates the high-level architecture of the system, showcasing the integration of various components like Azure AD, risk scoring, and dashboard visualization.
 
 ---
