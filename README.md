@@ -2,6 +2,7 @@
 
 ## What Are Identities and Identity-Based Attacks?
 Identities encompass all entities, both human and machine, that can access resources within an organization's ecosystem. They include IT admins, employees, third-party vendors, devices, and applications. In today's remote-working era, identities play a pivotal role in safeguarding critical systems and data.
+
 Identity-based attacks exploit vulnerabilities in authentication and access control mechanisms. Threat actors target user credentials, devices, or privileged accounts to infiltrate systems, escalate privileges, and launch attacks. Common examples include phishing, credential stuffing, session hijacking, and attacks targeting weak or static authentication systems.
 
 ## About Our Project
